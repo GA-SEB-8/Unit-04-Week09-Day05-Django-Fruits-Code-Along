@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from .models import Fruit
 
 # Create your views here.
@@ -30,7 +30,15 @@ def fruit_details(request,id):
 def fruit_create(request):
     if request.method == "POST":
         name = request.POST.get('name')
-        is_ready_to_eat = request.POST.get('is_ready_to_eat')
+        is_ready_to_eat = request.POST.get('is_ready_to_eat') == "on"
+
+        print(name)
+        print(is_ready_to_eat)
+
+        
+
+        created_fruit = Fruit.objects.create(name = name, is_ready_to_eat = is_ready_to_eat )
+        return redirect('fruit-list')
 
 
     return render(request,'fruits/fruit-form.html')
