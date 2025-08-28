@@ -77,7 +77,64 @@ def fruit_delete(request,id):
 
 def fruit_create_with_form(request):
     if request.method == "POST":
-        pass
+        form = FruitForm(request.POST) # create a new fruit form instance with the data from the request
+
+        if form.is_valid(): #validate the fruit form instance
+            fruit = form.save()
+            return redirect('fruit-list')
 
     form = FruitForm()
     return render(request,'fruits/fruit-form.html', {'form':form})
+
+
+def update_fruit_form(request,id):
+    fruit = Fruit.objects.get( id=id)
+    if request.method == "POST":
+        form = FruitForm(request.POST, instance=fruit)
+        if form.is_valid():
+            fruit = form.save()
+            return redirect("fruit-list")
+    else:
+        form = FruitForm(instance=fruit)
+    return render(request, "fruits/fruit_form.html", {"form": form, "mode": "Update"})
+
+
+
+
+
+
+# Class Based Views (CBV)
+from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
+
+
+class FruitListView(ListView):
+    model = Fruit
+    template_name = 'fruits/fruit-list.html'
+    context_object_name = 'fruits'
+    queryset = Fruit.objects.filter(is_ready_to_eat = True)
+
+ 
+
+
+
+class FruitCreateView(CreateView):
+    model = Fruit
+    fields = ['name','is_ready_to_eat']
+    template_name = 'fruits/fruit-form.html'
+    success_url = 'fruit-list'
+
+
+class FruitDetailView(DetailView):
+    model = Fruit
+    template_name='fruits/fruit-detail.html'
+    context_object_name = 'found_fruit'
+
+class FruitUpdateView(UpdateView):
+    model = Fruit
+    fields = ['name','is_ready_to_eat']
+    template_name = 'fruits/fruit-form.html'
+    success_url = 'fruit-list'
+
+class FruitDeleteView(DeleteView):
+    model = Fruit
+    success_url = 'fruit-list'

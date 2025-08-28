@@ -4,13 +4,19 @@ from . import views
 
 urlpatterns = [
     path('', views.welcome, name='welcome'),
-    path('fruits/',views.all_fruits, name='fruit-list'),
+    # path('fruits/',views.all_fruits, name='fruit-list'),
     path('fruits/<int:id>/', views.fruit_details, name='fruit-detail'),
-    path('fruits/create/',views.fruit_create, name='fruit-create'),
+    # path('fruits/create/',views.fruit_create, name='fruit-create'),
     path('fruits/<int:id>/edit/', views.fruit_update, name='fruit-update'),
     path('fruits/<int:id>/delete/', views.fruit_delete, name='fruit-delete'),
 
-    path('fruits/new',views.fruit_create_with_form, name='fruit-create-form')
+    path('fruits/new/',views.fruit_create_with_form, name='fruit-create-form'),
+
+
+    # Class Based Views
+
+    path('fruits/',views.FruitListView.as_view(), name='fruit-list'),
+    path('fruits/create/',views.FruitCreateView.as_view(), name='fruit-create'),
 
    
 ]
