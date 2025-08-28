@@ -18,4 +18,4 @@ def all_fruits(request):
     # SELECT * FROM fruits
     fruits = Fruit.objects.all()
     print(fruits)
-    return render(request,'fruit-list.html')
+    return render(request,'fruit-list.html',{'fruits':fruits})

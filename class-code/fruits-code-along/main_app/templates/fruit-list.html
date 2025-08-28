@@ -4,4 +4,9 @@
 {% block body%}
 
     <h1>All Fruits Page</h1>
+
+    {% for one_fruit in fruits %}
+        <h2>Name: {{one_fruit.name}}</h2>
+        <p>is ready to eat? {{one_fruit.is_ready_to_eat}}</p>
+    {% endfor%}
 {% endblock %}
