@@ -28,6 +28,9 @@ def fruit_details(request,id):
 
 
 def fruit_create(request):
-    print(request.method)
+    if request.method == "POST":
+        name = request.POST.get('name')
+        is_ready_to_eat = request.POST.get('is_ready_to_eat')
+
 
     return render(request,'fruits/fruit-form.html')
