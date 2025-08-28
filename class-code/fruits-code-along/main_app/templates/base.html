@@ -9,8 +9,10 @@
 <body>
 
     <nav>
-        <a href="/homepage">homepage</a>
-        <a href="/about">about</a>
+        <a href="{% url 'welcome'%}">homepage</a>
+        <a href="{% url 'fruit-list'%}">Fruits</a>
+        <a href="{% url 'fruit-create'%}">Create</a>
+
     </nav>
 
     {% block body%}

@@ -25,3 +25,9 @@ def all_fruits(request):
 def fruit_details(request,id):
     found_fruit = Fruit.objects.get(id=id)
     return render(request, 'fruits/fruit-detail.html',{'found_fruit':found_fruit})
+
+
+def fruit_create(request):
+    print(request.method)
+
+    return render(request,'fruits/fruit-form.html')
