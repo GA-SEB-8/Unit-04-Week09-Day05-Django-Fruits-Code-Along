@@ -169,7 +169,7 @@ Your application should expose these routes (adjust `items` to your plural resou
 | GET         | /items/<id>/        | Show    | `item_detail` | Show one item by ID            |
 | GET         | /items/<id>/edit/   | Edit    | `item_update` | Show form to edit an item      |
 | POST        | /items/<id>/edit/   | Update  | `item_update` | Update an item                 |
-| POST/DELETE | /items/<id>/delete/ | Destroy | `item_delete` | Delete an item                 |
+| POST | /items/<id>/delete/ | Destroy | `item_delete` | Delete an item                 |
 
 > Note: Using POST for update/delete is acceptable in classic Django form flows (HTML forms don’t support PUT/DELETE). You may also implement method override if you want.
 
