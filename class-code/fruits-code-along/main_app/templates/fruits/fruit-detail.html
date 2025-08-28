@@ -7,5 +7,9 @@
     <p>{{found_fruit.is_ready_to_eat}}</p>
 
     <a href="{% url 'fruit-update' id=found_fruit.id%}">Edit Fruit</a>
+    <form action="{% url 'fruit-delete' found_fruit.id%}" method='post'>
+        {% csrf_token %}
+        <button>Delete Fruit</button>
+    </form>
 
 {% endblock %}

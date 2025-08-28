@@ -49,6 +49,22 @@ def fruit_create(request):
 def fruit_update(request,id):
     fruit = Fruit.objects.get(id=id)
     if request.method == 'POST':
-        pass
+        name = request.POST.get('name')
+        is_ready_to_eat = request.POST.get('is_ready_to_eat') == "on"
+        
+        # updating fruit information
+        fruit.name = name
+        fruit.is_ready_to_eat = is_ready_to_eat
+        fruit.save()
+
+        return redirect('fruit-list')
+
+
 
     return render(request, 'fruits/fruit-form.html', {'fruit':fruit})
+
+
+def fruit_delete(request,id):
+
+    Fruit.objects.get(id=id).delete()
+    return redirect('fruit-list')
