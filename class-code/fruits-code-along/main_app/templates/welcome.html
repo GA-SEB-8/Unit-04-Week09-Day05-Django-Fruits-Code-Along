@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% load static%} {% comment %} If you are using static files put this here {% endcomment %}
+    
+{% block body%}
+    <h1>Welcome to my website {{name}}</h1>
+    <p>This is Omars first Django Website!</p>
+
+    <p>{{students}}</p>
+
+    <ol>
+    {% for student in students %}
+
+        <li>{{student}}</li>
+    {% endfor%}
+    </ol>
+
+    {% if is_logged_in%}
+    <p>Welcome Logged in User</p>
+    {% else%}
+    <p>You are not logged in</p>
+    {% endif%}
+{% endblock %}
