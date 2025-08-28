@@ -10,5 +10,7 @@ urlpatterns = [
     path('fruits/<int:id>/edit/', views.fruit_update, name='fruit-update'),
     path('fruits/<int:id>/delete/', views.fruit_delete, name='fruit-delete'),
 
+    path('fruits/new',views.fruit_create_with_form, name='fruit-create-form')
+
    
 ]

@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect
 from .models import Fruit
+from .forms import FruitForm
 
 # Create your views here.
 
@@ -68,3 +69,15 @@ def fruit_delete(request,id):
 
     Fruit.objects.get(id=id).delete()
     return redirect('fruit-list')
+
+
+
+
+# Create with form
+
+def fruit_create_with_form(request):
+    if request.method == "POST":
+        pass
+
+    form = FruitForm()
+    return render(request,'fruits/fruit-form.html', {'form':form})
