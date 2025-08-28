@@ -8,7 +8,7 @@
         {% csrf_token %}
 
         <label for="name">Name:</label>
-        <input type="text"name="name" id="name">
+        <input value="{{fruit.name}}" type="text"name="name" id="name">
 
         <label for="is_ready_to_eat">Is Ready To Eat?</label>
         <input type="checkbox"name="is_ready_to_eat" id="is_ready_to_eat">

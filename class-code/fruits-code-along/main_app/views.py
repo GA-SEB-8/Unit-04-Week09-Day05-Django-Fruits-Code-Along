@@ -27,6 +27,7 @@ def fruit_details(request,id):
     return render(request, 'fruits/fruit-detail.html',{'found_fruit':found_fruit})
 
 
+# POST create 1 fruit
 def fruit_create(request):
     if request.method == "POST":
         name = request.POST.get('name')
@@ -42,3 +43,12 @@ def fruit_create(request):
 
 
     return render(request,'fruits/fruit-form.html')
+
+
+
+def fruit_update(request,id):
+    fruit = Fruit.objects.get(id=id)
+    if request.method == 'POST':
+        pass
+
+    return render(request, 'fruits/fruit-form.html', {'fruit':fruit})

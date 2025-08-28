@@ -6,4 +6,6 @@
     <h2>{{found_fruit.name}}</h2>
     <p>{{found_fruit.is_ready_to_eat}}</p>
 
+    <a href="{% url 'fruit-update' id=found_fruit.id%}">Edit Fruit</a>
+
 {% endblock %}

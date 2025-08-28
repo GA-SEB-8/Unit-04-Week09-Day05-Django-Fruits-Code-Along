@@ -19,6 +19,6 @@
 
 
 [1]: ./class-code/fruits-code-along/
-[2]: ./
+[2]: ./Django-CRUD-Lab/
 
 ---
