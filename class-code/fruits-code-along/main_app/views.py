@@ -13,9 +13,15 @@ def welcome(request):
 # 3. create the html file
 
 
+# GET for all the fruits
 def all_fruits(request):
 
     # SELECT * FROM fruits
     fruits = Fruit.objects.all()
-    print(fruits)
     return render(request,'fruits/fruit-list.html',{'fruits':fruits})
+
+
+# GET for 1 fruit
+def fruit_details(request,id):
+    found_fruit = Fruit.objects.get(id=id)
+    return render(request, 'fruits/fruit-detail.html',{'found_fruit':found_fruit})
