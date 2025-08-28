@@ -2,7 +2,13 @@
 
 
 {% block body%}
-    <h1>Create a new Fruit</h1>
+    {% if fruit%}
+        <h1>Update {{fruit.name}}</h1>
+
+    {% else%}
+        <h1>Create a new Fruit</h1>
+
+    {% endif %}
 
     <form method='post'>
         {% csrf_token %}
@@ -11,7 +17,7 @@
         <input value="{{fruit.name}}" type="text"name="name" id="name">
 
         <label for="is_ready_to_eat">Is Ready To Eat?</label>
-        <input type="checkbox"name="is_ready_to_eat" id="is_ready_to_eat">
+        <input {% if fruit.is_ready_to_eat%} checked {% endif%} type="checkbox"name="is_ready_to_eat" id="is_ready_to_eat">
 
         <button type='submit'>Submit</button>
     </form>
