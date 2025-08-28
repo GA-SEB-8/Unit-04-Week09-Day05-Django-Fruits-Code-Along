@@ -9,3 +9,6 @@ class Fruit(models.Model):
 
     class Meta:
         db_table = 'fruits' # save table in db as 'fruits'
+    
+    def __str__(self):
+        return f'name:{self.name}, is ready to eat: {self.is_ready_to_eat}'

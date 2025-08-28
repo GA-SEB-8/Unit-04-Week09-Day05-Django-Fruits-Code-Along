@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from .models import Fruit
 
 # Create your views here.
 
@@ -14,4 +15,7 @@ def welcome(request):
 
 def all_fruits(request):
 
+    # SELECT * FROM fruits
+    fruits = Fruit.objects.all()
+    print(fruits)
     return render(request,'fruit-list.html')
